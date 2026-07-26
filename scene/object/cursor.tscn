@@ -76,6 +76,8 @@ shape = SubResource("CircleShape2D_iiqk5")
 wait_time = 0.05
 one_shot = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="area_entered" from="." to="." method="_on_node_entered"]
+[connection signal="area_exited" from="." to="." method="_on_node_exited"]
+[connection signal="body_entered" from="." to="." method="_on_node_entered"]
+[connection signal="body_exited" from="." to="." method="_on_node_exited"]
 [connection signal="timeout" from="ShootDelay" to="." method="_on_shoot_delay_timeout"]

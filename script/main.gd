@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var ball_scene :PackedScene
-
+@export var bomb_scene :PackedScene
 var screen_size:Vector2
 var score:int 
 var life :int
@@ -29,15 +29,22 @@ func _on_spawn_delay_timeout() -> void:
 	ball.quit_screen.connect(game_over)
 	$PlaceBall.add_child(ball)
 	var pos=Vector2(randi_range(100,screen_size.x-100),screen_size.y)
-	ball.start(pos,Vector2(1,1),-1) 
+	ball.start(pos,Vector2(1,1),-0.4) 
+	var bomb: Bomb =bomb_scene.instantiate()
+	$PlaceBomb.add_child(bomb)
+	pos=Vector2(randi_range(100,screen_size.x-100),screen_size.y)
+	bomb.start(pos,Vector2(randi_range(100,screen_size.x-100),randi_range(200,screen_size.y-200)),Vector2(1,1),5)
+	
+	
 
 func game_over():
 	life-=1
 	if life==0 :
-		$SpawnDelay.stop()
-		$Cursor.stop()
-		get_tree().call_group("ball","destroy")
-		$MainInterface.game_over()
+		pass
+	##	$SpawnDelay.stop()
+	##	$Cursor.stop()
+	##	get_tree().call_group("ball","destroy")
+	#	$MainInterface.game_over()
 	
 func _on_main_interface_reset() -> void:
 	new_game()

@@ -1,9 +1,9 @@
 extends Area2D
 
-@export var speed : float =2500
+@export var speed : float =3000
 @export var angular_speed_move : float=180
 @export var angular_speed_still: float=90
-@export var min_len_shoot : float =15
+@export var min_len_shoot : float =45
 var collision_node: Array[Node2D]=[]
 var screen_size : Vector2
 signal shoot
@@ -59,10 +59,10 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.animation="move"
 
 
-func _on_body_entered(body: Node2D):
+func _on_node_entered(body: Node2D):
 	collision_node.append(body)
 	
-func _on_body_exited(body: Node2D) -> void:
+func _on_node_exited(body: Node2D) -> void:
 	collision_node.erase(body)
 
 

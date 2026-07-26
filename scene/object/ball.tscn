@@ -136,7 +136,6 @@ scale_max = 10.0
 [node name="Ball" type="RigidBody2D" unique_id=1517445498 groups=["ball"]]
 gravity_scale = 0.0
 script = ExtResource("1_cilsu")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=491537672]
 scale = Vector2(0.3, 0.3)
