@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cqtflvta1dile"]
+
+[ext_resource type="Script" uid="uid://hc5ct7skl4d2" path="res://script/main.gd" id="1_v0l8b"]
+[ext_resource type="PackedScene" uid="uid://dlumtohki3to" path="res://scene/object/cursor.tscn" id="2_wp4xf"]
+[ext_resource type="PackedScene" uid="uid://bp0a11b43paji" path="res://scene/object/ball.tscn" id="3_wp4xf"]
+[ext_resource type="PackedScene" uid="uid://dnqafg7bhsgf7" path="res://scene/HUD/main_interface.tscn" id="4_brvut"]
+
+[node name="Main" type="Node2D" unique_id=18681300]
+script = ExtResource("1_v0l8b")
+ball_scene = ExtResource("3_wp4xf")
+
+[node name="PlaceBall" type="Node2D" parent="." unique_id=275901482]
+
+[node name="Cursor" parent="." unique_id=2012913201 instance=ExtResource("2_wp4xf")]
+
+[node name="StartCursor" type="Marker2D" parent="." unique_id=1534521505]
+position = Vector2(960, 540)
+
+[node name="SpawnDelay" type="Timer" parent="." unique_id=1294876313]
+wait_time = 0.65
+
+[node name="MainInterface" parent="." unique_id=279520381 instance=ExtResource("4_brvut")]
+
+[connection signal="shoot" from="Cursor" to="." method="_on_cursor_shoot"]
+[connection signal="timeout" from="SpawnDelay" to="." method="_on_spawn_delay_timeout"]
+[connection signal="reset" from="MainInterface" to="." method="_on_main_interface_reset"]

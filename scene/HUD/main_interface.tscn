@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dnqafg7bhsgf7"]
+
+[ext_resource type="Script" uid="uid://drei6v8e2adcd" path="res://script/main_interface.gd" id="1_1oxx6"]
+[ext_resource type="FontFile" uid="uid://cdm7t850wajd6" path="res://asset/font/Jersey20-Regular.ttf" id="1_6sujd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulvyl"]
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5vpa"]
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="MainInterface" type="CanvasLayer" unique_id=279520381]
+script = ExtResource("1_1oxx6")
+
+[node name="Score" type="Label" parent="." unique_id=1634191740]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 251.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_6sujd")
+theme_override_font_sizes/font_size = 185
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reset" type="Button" parent="." unique_id=1512407858]
+offset_left = 675.0
+offset_top = 728.0
+offset_right = 1236.0
+offset_bottom = 987.0
+theme_override_fonts/font = ExtResource("1_6sujd")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_ulvyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s5vpa")
+text = "Reset"
+icon_alignment = 1
+
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]

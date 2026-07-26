@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://bp0a11b43paji"]
+
+[ext_resource type="Script" uid="uid://qinnxjis2k0h" path="res://script/ball.gd" id="1_cilsu"]
+[ext_resource type="Texture2D" uid="uid://dytgukoihf1cm" path="res://asset/image/ball/blue/ball_blue_0.png" id="2_p5425"]
+[ext_resource type="Texture2D" uid="uid://djhd5qqcghq58" path="res://asset/image/ball/blue/ball_blue_1.png" id="3_i43t2"]
+[ext_resource type="Texture2D" uid="uid://d1hrbhffnc2ir" path="res://asset/image/ball/blue/ball_blue_2.png" id="4_ab0x0"]
+[ext_resource type="Texture2D" uid="uid://c5q2x50twoxwu" path="res://asset/image/ball/blue/ball_blue_3.png" id="5_633nu"]
+[ext_resource type="Texture2D" uid="uid://bxtgh7qsg3h6u" path="res://asset/image/ball/blue/ball_blue_4.png" id="6_m3kdy"]
+[ext_resource type="Texture2D" uid="uid://cnfn7vqkreiu0" path="res://asset/image/ball/blue/ball_blue_5.png" id="7_5i6c6"]
+[ext_resource type="Texture2D" uid="uid://btabjmc2fxsyu" path="res://asset/image/ball/blue/ball_blue_6.png" id="8_k4do8"]
+[ext_resource type="Texture2D" uid="uid://c4ghbuesbyefv" path="res://asset/image/ball/green/ball_green_0.png" id="9_pakw1"]
+[ext_resource type="Texture2D" uid="uid://cucpxftaqsnck" path="res://asset/image/ball/green/ball_green_1.png" id="10_a27ye"]
+[ext_resource type="Texture2D" uid="uid://b4wqvh5ksraxh" path="res://asset/image/ball/green/ball_green_2.png" id="11_4rfmd"]
+[ext_resource type="Texture2D" uid="uid://cqfp5gsy04b4g" path="res://asset/image/ball/green/ball_green_3.png" id="12_coc7m"]
+[ext_resource type="Texture2D" uid="uid://uo1558ccolxx" path="res://asset/image/ball/green/ball_green_4.png" id="13_y2ker"]
+[ext_resource type="Texture2D" uid="uid://djs76d3y7nrv3" path="res://asset/image/ball/green/ball_green_5.png" id="14_b6mq0"]
+[ext_resource type="Texture2D" uid="uid://cne8kjx3b55ib" path="res://asset/image/ball/green/ball_green_6.png" id="15_wi1os"]
+[ext_resource type="Texture2D" uid="uid://cho0ug3y76qkd" path="res://asset/image/ball/red/ball_red_0.png" id="16_py40y"]
+[ext_resource type="Texture2D" uid="uid://dpc4042qxt6df" path="res://asset/image/ball/red/ball_red_1.png" id="17_hd7pc"]
+[ext_resource type="Texture2D" uid="uid://dce17808w83dm" path="res://asset/image/ball/red/ball_red_2.png" id="18_x4dft"]
+[ext_resource type="Texture2D" uid="uid://cnfarhc81hjld" path="res://asset/image/ball/red/ball_red_3.png" id="19_pccrl"]
+[ext_resource type="Texture2D" uid="uid://bxfuvdsq6obwp" path="res://asset/image/ball/red/ball_red_4.png" id="20_0hpn5"]
+[ext_resource type="Texture2D" uid="uid://d1nyop5vuypqk" path="res://asset/image/ball/red/ball_red_5.png" id="21_ssyw2"]
+[ext_resource type="Texture2D" uid="uid://c5ck1wolkpswi" path="res://asset/image/ball/red/ball_red_6.png" id="22_3vv86"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iiqk5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p5425")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i43t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ab0x0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_633nu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m3kdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5i6c6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_k4do8")
+}],
+"loop": 2,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_pakw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a27ye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4rfmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_coc7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_y2ker")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_b6mq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_wi1os")
+}],
+"loop": 2,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_py40y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hd7pc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_x4dft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_pccrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_0hpn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ssyw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_3vv86")
+}],
+"loop": 1,
+"name": &"red",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iiqk5"]
+radius = 53.0
+height = 140.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iiqk5"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1qqu1"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 1, 0)
+emission_shape = 1
+emission_sphere_radius = 50.0
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+direction = Vector3(0, 0, 0)
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = -1.6093254e-05
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.40000013
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 399.99997
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 10.0
+
+[node name="Ball" type="RigidBody2D" unique_id=1517445498 groups=["ball"]]
+gravity_scale = 0.0
+script = ExtResource("1_cilsu")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=491537672]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_iiqk5")
+animation = &"green"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1191405109]
+position = Vector2(-5, -31)
+shape = SubResource("CapsuleShape2D_iiqk5")
+disabled = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2095141954]
+rect = Rect2(-63, -106, 114, 179)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=482437420]
+material = SubResource("CanvasItemMaterial_iiqk5")
+position = Vector2(-5, -31)
+emitting = false
+amount = 200
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_1qqu1")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
