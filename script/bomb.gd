@@ -9,7 +9,7 @@ var current_time :float=0
 var max_time:float;
 
 func _ready():
-	angular_degrees_speed=randf_range(300,360)
+	angular_degrees_speed=randf_range(80,150)
 	set_process(false)
 	hide()
 func start(pos :Vector2,peak :Vector2,size:Vector2,time:float):
@@ -17,7 +17,7 @@ func start(pos :Vector2,peak :Vector2,size:Vector2,time:float):
 	size=size
 	max_time=time
 	coefficient=pos-peak
-	half_ellipse_center=Vector2(pos.y,peak.x)
+	half_ellipse_center=Vector2(peak.x,pos.y)
 	set_process(true)
 	print(half_ellipse_center)
 	$AnimatedSprite2D.play()
@@ -37,7 +37,7 @@ func jump(progress:float):
 		relative_progress=progress*2
 		relative_weight=decelerate(relative_progress)
 		return relative_weight/2
-	if progress>0.3 and progress<0.6:
+	if progress>0.4 and progress<0.6:
 		var animation_weight=Vector2(decelerate(0.4*2)/2, acelerate((0.6-0.5)*2)/2+0.5)
 		return apply(animation_weight,(progress-0.4)/0.20)
 	if progress>=0.6:
