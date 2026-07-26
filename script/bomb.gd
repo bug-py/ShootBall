@@ -25,9 +25,9 @@ func start(pos :Vector2,peak :Vector2,size:Vector2,time:float):
 func apply(value:Vector2,weight:float)->float:
 	return value.x+(value.y-value.x)*weight
 func acelerate(progress:float)->float:
-	return progress**3
+	return progress**2
 func decelerate(progress:float)->float:
-	return 1-(1-progress)**2
+	return 1-(1-progress)**3
 
 func jump(progress:float):
 	var weight;
