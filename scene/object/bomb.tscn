@@ -32,7 +32,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iiqk5"]
-radius = 54.0
+radius = 38.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_inruc"]
 particles_animation = true
@@ -61,7 +61,7 @@ gravity = Vector3(0, 0, 0)
 radial_accel_min = -2.2351742e-06
 radial_accel_max = -2.2351742e-06
 scale_min = 0.0
-scale_max = 5.0
+scale_max = 3.0
 color = Color(1, 0, 0.6509804, 1)
 color_ramp = SubResource("GradientTexture1D_6lr3w")
 
@@ -69,24 +69,22 @@ color_ramp = SubResource("GradientTexture1D_6lr3w")
 script = ExtResource("1_inruc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2023580050]
-position = Vector2(-3, -24)
-scale = Vector2(0.15, 0.15)
+position = Vector2(-2.0000153, -19.000002)
+scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_iiqk5")
 animation = &"bomb"
-frame = 4
+frame_progress = 0.8724551
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=671668293]
-position = Vector2(-4, -19)
-rect = Rect2(-49, -72, 105, 150)
+position = Vector2(-1, -4)
+rect = Rect2(-40, -73, 81, 120)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1538032040]
-position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_iiqk5")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=946546452]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_inruc")
-position = Vector2(0, 1)
 scale = Vector2(0.5, 0.5)
 emitting = false
 amount = 100

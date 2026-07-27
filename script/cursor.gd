@@ -1,8 +1,8 @@
 extends Area2D
 
-@export var speed : float =3000
-@export var angular_speed_move : float=180
-@export var angular_speed_still: float=90
+@export var speed : float =3400
+@export var angular_speed_move : float=360
+@export var angular_speed_still: float=125
 @export var min_len_shoot : float =45
 var collision_node: Array[Node2D]=[]
 var screen_size : Vector2
@@ -22,20 +22,23 @@ func start(pos):
 func stop():
 	$CollisionShape2D.set_deferred("disabled",true)		
 	$AnimatedSprite2D.stop()
-	$ShootDelay.stop()
 	set_process(false)
 	hide()
 
 func _ready() -> void:
 	screen_size=get_viewport_rect().size
-	stop()	
+	stop()
+
+
 	
 func make_shoot():
 	if Input.is_action_just_pressed("shoot"): 
 		if(collision_node):
 			shoot.emit(collision_node)
-		$ShootDelay.start()
-		set_process(false)
+		var tween=create_tween()
+		tween.tween_property(self,"scale",Vector2(1.3,1.3),0.1)
+		tween.tween_property(self,"scale",Vector2(1.0,1.0),0.1)
+		
 	
 		
 func _process(delta: float) -> void:
@@ -64,7 +67,3 @@ func _on_node_entered(body: Node2D):
 	
 func _on_node_exited(body: Node2D) -> void:
 	collision_node.erase(body)
-
-
-func _on_shoot_delay_timeout() -> void:
-	set_process(true)

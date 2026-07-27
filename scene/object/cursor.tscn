@@ -72,12 +72,7 @@ animation = &"move"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=370837391]
 shape = SubResource("CircleShape2D_iiqk5")
 
-[node name="ShootDelay" type="Timer" parent="." unique_id=1765457978]
-wait_time = 0.05
-one_shot = true
-
 [connection signal="area_entered" from="." to="." method="_on_node_entered"]
 [connection signal="area_exited" from="." to="." method="_on_node_exited"]
 [connection signal="body_entered" from="." to="." method="_on_node_entered"]
 [connection signal="body_exited" from="." to="." method="_on_node_exited"]
-[connection signal="timeout" from="ShootDelay" to="." method="_on_shoot_delay_timeout"]

@@ -16,6 +16,7 @@ bomb_scene = ExtResource("3_0ha60")
 [node name="PlaceBomb" type="Node2D" parent="." unique_id=1407998616]
 
 [node name="Cursor" parent="." unique_id=2012913201 instance=ExtResource("2_wp4xf")]
+position = Vector2(960, 550)
 
 [node name="StartCursor" type="Marker2D" parent="." unique_id=1534521505]
 position = Vector2(960, 540)
@@ -23,10 +24,11 @@ position = Vector2(960, 540)
 [node name="MainInterface" parent="." unique_id=279520381 instance=ExtResource("4_brvut")]
 
 [node name="SpawnBombDelay" type="Timer" parent="." unique_id=1169617108]
-wait_time = 2.0
+one_shot = true
 
 [node name="SpawnBallDelay" type="Timer" parent="." unique_id=1294876313]
-wait_time = 100.0
+wait_time = 0.5
+one_shot = true
 
 [connection signal="shoot" from="Cursor" to="." method="_on_cursor_shoot"]
 [connection signal="reset" from="MainInterface" to="." method="_on_main_interface_reset"]
