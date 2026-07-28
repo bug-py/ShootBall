@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dhbqm4v0bj4il"]
+
+[ext_resource type="Texture2D" uid="uid://befusns2sl7r8" path="res://asset/image/cloud.png" id="1_k5bvb"]
+[ext_resource type="Script" uid="uid://cvujbt6cmhn6r" path="res://script/cloud.gd" id="2_scov2"]
+
+[node name="Cloud" type="Sprite2D" unique_id=387480902]
+texture_filter = 1
+position = Vector2(521.99994, 283.99997)
+scale = Vector2(10, 10)
+texture = ExtResource("1_k5bvb")
+script = ExtResource("2_scov2")
+metadata/_edit_group_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2131675786]
+rect = Rect2(-12, -10, 22, 14)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

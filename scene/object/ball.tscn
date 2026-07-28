@@ -111,6 +111,28 @@ animations = [{
 radius = 53.0
 height = 140.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p5425"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i43t2"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 10, 1)
+emission_shape = 2
+emission_sphere_radius = 1.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 199.99998
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 99.99998
+gravity = Vector3(0, 0, 0)
+hue_variation_min = -1.0
+hue_variation_max = 0.99999994
+anim_speed_max = 16.0
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iiqk5"]
 particles_animation = true
 particles_anim_h_frames = 1
@@ -136,28 +158,6 @@ gravity = Vector3(0, 0, 0)
 scale_min = 3.0
 scale_max = 10.0
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p5425"]
-particles_animation = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i43t2"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(10, 10, 1)
-emission_shape = 2
-emission_sphere_radius = 1.0
-angular_velocity_min = -1.6093254e-05
-angular_velocity_max = 199.99998
-orbit_velocity_min = 9.49949e-08
-orbit_velocity_max = 9.49949e-08
-radial_velocity_min = -2.2351742e-05
-radial_velocity_max = 99.99998
-gravity = Vector3(0, 0, 0)
-hue_variation_min = -1.0
-hue_variation_max = 0.99999994
-anim_speed_max = 16.0
-
 [node name="Ball" type="RigidBody2D" unique_id=1517445498 groups=["ball"]]
 gravity_scale = 0.0
 script = ExtResource("1_cilsu")
@@ -167,32 +167,34 @@ material = SubResource("CanvasItemMaterial_tgufv")
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_iiqk5")
 animation = &"green"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1191405109]
-position = Vector2(-5, -31)
-shape = SubResource("CapsuleShape2D_iiqk5")
-disabled = true
+offset = Vector2(10, 320)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2095141954]
-rect = Rect2(-63, -106, 114, 179)
+position = Vector2(3, 91)
+rect = Rect2(-63, -92, 114, 183)
 
-[node name="DestroyParticles" type="GPUParticles2D" parent="." unique_id=482437420]
-material = SubResource("CanvasItemMaterial_iiqk5")
-position = Vector2(-5, -31)
-emitting = false
-amount = 200
-lifetime = 0.5
-one_shot = true
-process_material = SubResource("ParticleProcessMaterial_1qqu1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1191405109]
+position = Vector2(-1, 64)
+shape = SubResource("CapsuleShape2D_iiqk5")
+disabled = true
 
 [node name="StartParticles" type="GPUParticles2D" parent="." unique_id=728230391]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_p5425")
-position = Vector2(-5, 26)
+position = Vector2(-4, 121)
 emitting = false
 amount = 10
 texture = ExtResource("23_i43t2")
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_i43t2")
+
+[node name="DestroyParticles" type="GPUParticles2D" parent="." unique_id=482437420]
+material = SubResource("CanvasItemMaterial_iiqk5")
+position = Vector2(0, 63)
+emitting = false
+amount = 200
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_1qqu1")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

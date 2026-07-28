@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://tsb0ofpdfxo2"]
+
+[ext_resource type="Script" uid="uid://62tn0i6cnuyh" path="res://script/spawner.gd" id="1_keuh2"]
+[ext_resource type="Script" uid="uid://bhfosrmyayh7y" path="res://script/difficulty_manager.gd" id="2_2kgiw"]
+[ext_resource type="PackedScene" uid="uid://bp0a11b43paji" path="res://scene/object/ball.tscn" id="2_f524y"]
+[ext_resource type="PackedScene" uid="uid://b04xqhohg3xyn" path="res://scene/object/bomb.tscn" id="3_2ub0e"]
+
+[node name="Spawner" type="Node2D" unique_id=416709119]
+script = ExtResource("1_keuh2")
+ball_scene = ExtResource("2_f524y")
+bomb_scene = ExtResource("3_2ub0e")
+
+[node name="PlaceBall" type="Node2D" parent="." unique_id=1729286561]
+
+[node name="PlaceBomb" type="Node2D" parent="." unique_id=610229115]
+
+[node name="DifficultyManager" type="Node" parent="." unique_id=2017327557]
+script = ExtResource("2_2kgiw")
+
+[node name="SpawnBallDelay" type="Timer" parent="." unique_id=1473811505]
+one_shot = true
+
+[node name="SpawnBombDelay" type="Timer" parent="." unique_id=1358647395]
+one_shot = true
+
+[connection signal="timeout" from="SpawnBallDelay" to="." method="_on_spawn_ball_delay_timeout"]
+[connection signal="timeout" from="SpawnBombDelay" to="." method="_on_spawn_bomb_delay_timeout"]

@@ -2,34 +2,25 @@
 
 [ext_resource type="Script" uid="uid://hc5ct7skl4d2" path="res://script/main.gd" id="1_v0l8b"]
 [ext_resource type="PackedScene" uid="uid://dlumtohki3to" path="res://scene/object/cursor.tscn" id="2_wp4xf"]
-[ext_resource type="PackedScene" uid="uid://b04xqhohg3xyn" path="res://scene/object/bomb.tscn" id="3_0ha60"]
-[ext_resource type="PackedScene" uid="uid://bp0a11b43paji" path="res://scene/object/ball.tscn" id="3_wp4xf"]
+[ext_resource type="PackedScene" uid="uid://4dr3t6x550rc" path="res://scene/sky.tscn" id="4_4j5ol"]
 [ext_resource type="PackedScene" uid="uid://dnqafg7bhsgf7" path="res://scene/HUD/main_interface.tscn" id="4_brvut"]
+[ext_resource type="PackedScene" uid="uid://tsb0ofpdfxo2" path="res://scene/spawner.tscn" id="4_p1hux"]
 
 [node name="Main" type="Node2D" unique_id=18681300]
 script = ExtResource("1_v0l8b")
-ball_scene = ExtResource("3_wp4xf")
-bomb_scene = ExtResource("3_0ha60")
 
-[node name="PlaceBall" type="Node2D" parent="." unique_id=275901482]
-
-[node name="PlaceBomb" type="Node2D" parent="." unique_id=1407998616]
+[node name="Spawner" parent="." unique_id=416709119 instance=ExtResource("4_p1hux")]
 
 [node name="Cursor" parent="." unique_id=2012913201 instance=ExtResource("2_wp4xf")]
-position = Vector2(960, 550)
+position = Vector2(960, 540)
 
 [node name="StartCursor" type="Marker2D" parent="." unique_id=1534521505]
 position = Vector2(960, 540)
 
 [node name="MainInterface" parent="." unique_id=279520381 instance=ExtResource("4_brvut")]
 
-[node name="SpawnBombDelay" type="Timer" parent="." unique_id=1169617108]
-one_shot = true
+[node name="Sky" parent="." unique_id=792652258 instance=ExtResource("4_4j5ol")]
 
-[node name="SpawnBallDelay" type="Timer" parent="." unique_id=1294876313]
-wait_time = 0.5
-
+[connection signal="ball_leave" from="Spawner" to="." method="game_over"]
 [connection signal="shoot" from="Cursor" to="." method="_on_cursor_shoot"]
 [connection signal="reset" from="MainInterface" to="." method="_on_main_interface_reset"]
-[connection signal="timeout" from="SpawnBombDelay" to="." method="_on_spawn_bomb_delay_timeout"]
-[connection signal="timeout" from="SpawnBallDelay" to="." method="_on_spawn_ball_delay_timeout"]

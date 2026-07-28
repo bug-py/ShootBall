@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://4dr3t6x550rc"]
+
+[ext_resource type="Script" uid="uid://daxev7x2gr5w" path="res://script/sky.gd" id="1_28pcw"]
+[ext_resource type="PackedScene" uid="uid://dhbqm4v0bj4il" path="res://scene/object/cloud.tscn" id="2_wud5e"]
+
+[node name="Sky" type="CanvasLayer" unique_id=792652258]
+layer = -1
+script = ExtResource("1_28pcw")
+cloud_scene = ExtResource("2_wud5e")
+cloud_count = 50
+
+[node name="Background" type="ColorRect" parent="." unique_id=116547871]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.46666667, 0.70980394, 0.99607843, 1)
+
+[node name="PlaceCloud" type="Node" parent="." unique_id=2043596312]

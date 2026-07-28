@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dhbqm4v0bj4il"]
+
+[ext_resource type="Texture2D" uid="uid://befusns2sl7r8" path="res://asset/image/cloud/cloud-1.png" id="1_k5bvb"]
+[ext_resource type="Texture2D" uid="uid://dkxhubxidrp3j" path="res://asset/image/cloud/cloud-2.png" id="2_8qa0t"]
+[ext_resource type="Script" uid="uid://cvujbt6cmhn6r" path="res://script/cloud.gd" id="2_scov2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_scov2"]
+blend_mode = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k5bvb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k5bvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8qa0t")
+}],
+"loop": 1,
+"name": &"cloud",
+"speed": 5.0
+}]
+
+[node name="Cloud" type="AnimatedSprite2D" unique_id=623212280]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_scov2")
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_k5bvb")
+animation = &"cloud"
+offset = Vector2(-11, 0)
+script = ExtResource("2_scov2")
+metadata/_edit_group_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2131675786]
+position = Vector2(-10.2, 0)
+rect = Rect2(-13.799998, -10, 23.999998, 14)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
