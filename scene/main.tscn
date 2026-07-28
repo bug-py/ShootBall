@@ -28,7 +28,6 @@ one_shot = true
 
 [node name="SpawnBallDelay" type="Timer" parent="." unique_id=1294876313]
 wait_time = 0.5
-one_shot = true
 
 [connection signal="shoot" from="Cursor" to="." method="_on_cursor_shoot"]
 [connection signal="reset" from="MainInterface" to="." method="_on_main_interface_reset"]

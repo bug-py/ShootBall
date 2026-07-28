@@ -36,7 +36,7 @@ func make_shoot():
 		if(collision_node):
 			shoot.emit(collision_node)
 		var tween=create_tween()
-		tween.tween_property(self,"scale",Vector2(1.3,1.3),0.1)
+		tween.tween_property(self,"scale",Vector2(0.8,0.8),0.1)
 		tween.tween_property(self,"scale",Vector2(1.0,1.0),0.1)
 		
 	

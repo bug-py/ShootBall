@@ -30,5 +30,6 @@ func destroy():
 	queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	quit_screen.emit()
+	if(not stars_ball):
+		quit_screen.emit()
 	queue_free()

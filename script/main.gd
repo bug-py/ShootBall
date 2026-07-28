@@ -5,46 +5,48 @@ extends Node2D
 var screen_size:Vector2
 var score:int 
 var life :int
+const DELAY_EXTRA_BALL_GROUP_FACTOR=0.7
+const DELAY_EXTRA_BOMB_GROUP_FACTOR=0.1
 const difficultys={
 	"easy":{
 		"ScoreRange":Vector2(0,30),
 		
-		"SpawnBallDelay": Vector2(1,0.9),
-		"GravityBall": Vector2(-0.05,-0.1),
+		"SpawnBallDelay": Vector2(1,0.8),
+		"GravityBall": Vector2(-0.2,-0.25),
 		"SizeBall":Vector2(1,0.8),
 		"GroupBall":Vector2(1,1),
 		
 		"SpawnBombDelay": Vector2(4,3.5),
-		"BombTimeMove":Vector2(4,3),
-		"SizeBomb":Vector2(1,1.1),
+		"BombTimeMove":Vector2(5,4),
+		"SizeBomb":Vector2(1,1.2),
 		"GroupBomb":Vector2(1,1)
 		
 	},
 	"medium":{
 		"ScoreRange":Vector2(30,100),
 		
-		"SpawnBallDelay": Vector2(0.8,0.6),
-		"GravityBall": Vector2(-0.15,-0.3),
-		"SizeBall":Vector2(0.9,0.6),
+		"SpawnBallDelay": Vector2(0.8,0.7),
+		"GravityBall": Vector2(-0.25,-0.35),
+		"SizeBall":Vector2(0.8,0.6),
 		"GroupBall":Vector2(1,2),
 		
 		"SpawnBombDelay": Vector2(3.5,3),
-		"BombTimeMove":Vector2(3,2.75),
-		"SizeBomb":Vector2(1,1.5),
+		"BombTimeMove":Vector2(4,3),
+		"SizeBomb":Vector2(1.1,1.4),
 		"GroupBomb":Vector2(1,2)
 	},
 	"hard":{
 		"ScoreRange":Vector2(100,200),
 		
-		"SpawnBallDelay": Vector2(1,0.8),
-		"GravityBall": Vector2(-0.1,-0.15),
-		"SizeBall":Vector2(1,0.9),
-		"GroupBall":Vector2(1,3),
+		"SpawnBallDelay": Vector2(0.85,0.65),
+		"GravityBall": Vector2(-0.3,-0.35),
+		"SizeBall":Vector2(0.6,0.4),
+		"GroupBall":Vector2(2,3),
 		
-		"SpawnBombDelay": Vector2(4,3.5),
-		"BombTimeMove":Vector2(4,3),
-		"SizeBomb":Vector2(1,1.1),
-		"GroupBomb":Vector2(1,3)
+		"SpawnBombDelay": Vector2(3,2.5),
+		"BombTimeMove":Vector2(3,2.5),
+		"SizeBomb":Vector2(1.4,1.6),
+		"GroupBomb":Vector2(2,3)
 	}
 }
 var current_difficulty:Dictionary
@@ -66,7 +68,7 @@ func update_score(value):
 		current_difficulty=difficultys["easy"]
 	elif score>=30 and score<100:
 		current_difficulty=difficultys["medium"]
-	elif score>100:
+	elif score>=100:
 		current_difficulty=difficultys["hard"]
 func _ready() -> void:
 	screen_size=get_viewport_rect().size
@@ -126,6 +128,7 @@ func _on_spawn_ball_delay_timeout() -> void:
 		var pos=Vector2(randi_range(100,screen_size.x-100),screen_size.y)
 		ball.start(pos,Vector2(size,size),gravity_scale,randi_range(0,50)==0) 
 	SetSpawnBallDelay(score)
+	$SpawnBallDelay.wait_time*=1+(GroupBallNumber-1)*DELAY_EXTRA_BALL_GROUP_FACTOR
 	$SpawnBallDelay.start()
 	
 	
@@ -142,6 +145,7 @@ func _on_spawn_bomb_delay_timeout() -> void:
 		var pos=Vector2(peak.x+randf_range(-250,250),screen_size.y)
 		bomb.start(pos,peak,Vector2(size,size),move_time)
 	SetSpawnBombDelay(score)
+	$SpawnBombDelay.wait_time*=1+(GroupBombNumber-1)*DELAY_EXTRA_BOMB_GROUP_FACTOR
 	$SpawnBombDelay.start()
 	
 func _on_main_interface_reset() -> void:
