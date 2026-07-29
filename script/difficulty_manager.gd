@@ -19,22 +19,22 @@ const difficultys={
 		"ScoreRange":Vector2(30,100),
 		
 		"SpawnBallDelay": Vector2(0.8,0.7),
-		"GravityBall": Vector2(-0.25,-0.35),
+		"GravityBall": Vector2(-0.25,-0.30),
 		"SizeBall":Vector2(0.8,0.6),
 		"GroupBall":Vector2(1,2),
 		
 		"SpawnBombDelay": Vector2(3.5,3),
 		"BombTimeMove":Vector2(4,3),
-		"SizeBomb":Vector2(1.1,1.4),
+		"SizeBomb":Vector2(1.2,1.4),
 		"GroupBomb":Vector2(1,2)
 	},
 	"hard":{
-		"ScoreRange":Vector2(100,200),
+		"ScoreRange":Vector2(100,250),
 		
-		"SpawnBallDelay": Vector2(0.85,0.65),
+		"SpawnBallDelay": Vector2(0.8,0.65),
 		"GravityBall": Vector2(-0.3,-0.35),
 		"SizeBall":Vector2(0.6,0.4),
-		"GroupBall":Vector2(2,3),
+		"GroupBall":Vector2(1,3),
 		
 		"SpawnBombDelay": Vector2(3,2.5),
 		"BombTimeMove":Vector2(3,2.5),

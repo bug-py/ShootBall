@@ -38,7 +38,7 @@ func _on_cursor_shoot(collision:Array[Node2D]) -> void:
 		if node.is_in_group("ball"):
 			
 			if node.stars_ball:
-				life=min(life+1,5)
+				life=min(life+1,7)
 				$MainInterface.update_life(life)
 				update_score($Spawner.clear_screen())
 			else:

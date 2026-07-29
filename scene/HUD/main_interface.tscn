@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://drei6v8e2adcd" path="res://script/main_interface.gd" id="1_1oxx6"]
 [ext_resource type="FontFile" uid="uid://cdm7t850wajd6" path="res://asset/font/Jersey20-Regular.ttf" id="1_6sujd"]
+[ext_resource type="Texture2D" uid="uid://xk5vbjbxud5e" path="res://asset/image/life.png" id="3_idt65"]
+[ext_resource type="Texture2D" uid="uid://dm2yok0notlw6" path="res://asset/image/gold_life.png" id="4_tgufv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulvyl"]
 border_color = Color(1, 1, 1, 1)
@@ -27,31 +29,12 @@ script = ExtResource("1_1oxx6")
 [node name="Score" type="Label" parent="." unique_id=1634191740]
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 43.0
-offset_top = 1.0
-offset_right = 45.0
-offset_bottom = 252.0
+offset_bottom = 186.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0.24840015, 0.24840018, 0.24840015, 1)
 theme_override_fonts/font = ExtResource("1_6sujd")
 theme_override_font_sizes/font_size = 185
 text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Life" type="Label" parent="." unique_id=1577381931]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -1008.0
-offset_top = -36.0
-offset_right = -826.0
-offset_bottom = 150.0
-grow_horizontal = 2
-size_flags_horizontal = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_6sujd")
-theme_override_font_sizes/font_size = 185
-text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -66,5 +49,54 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ulvyl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_s5vpa")
 text = "Reset"
 icon_alignment = 1
+
+[node name="HealthBar" type="HBoxContainer" parent="." unique_id=2139992694]
+offset_left = 35.0
+offset_top = 27.0
+offset_right = 492.0
+offset_bottom = 104.0
+alignment = 1
+
+[node name="life_0" type="TextureRect" parent="HealthBar" unique_id=1128323431]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_idt65")
+expand_mode = 2
+
+[node name="life_1" type="TextureRect" parent="HealthBar" unique_id=1030702782]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_idt65")
+expand_mode = 2
+
+[node name="life_2" type="TextureRect" parent="HealthBar" unique_id=384980573]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_idt65")
+expand_mode = 2
+
+[node name="life_3" type="TextureRect" parent="HealthBar" unique_id=1101580985]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_idt65")
+expand_mode = 2
+
+[node name="life_4" type="TextureRect" parent="HealthBar" unique_id=2109249736]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_idt65")
+expand_mode = 2
+
+[node name="life_5" type="TextureRect" parent="HealthBar" unique_id=582434871]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("4_tgufv")
+expand_mode = 2
+
+[node name="life_6" type="TextureRect" parent="HealthBar" unique_id=1018896108]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("4_tgufv")
+expand_mode = 2
 
 [connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]
