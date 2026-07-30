@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://4dr3t6x550rc" path="res://scene/sky.tscn" id="4_4j5ol"]
 [ext_resource type="PackedScene" uid="uid://dnqafg7bhsgf7" path="res://scene/HUD/main_interface.tscn" id="4_brvut"]
 [ext_resource type="PackedScene" uid="uid://tsb0ofpdfxo2" path="res://scene/spawner.tscn" id="4_p1hux"]
+[ext_resource type="PackedScene" uid="uid://di36jqqp4sby0" path="res://scene/HUD/game_over.tscn" id="6_4j5ol"]
+[ext_resource type="PackedScene" uid="uid://b7a0ku20s5edv" path="res://scene/HUD/menu.tscn" id="7_p1hux"]
 
 [node name="Main" type="Node2D" unique_id=18681300]
 script = ExtResource("1_v0l8b")
@@ -12,15 +14,24 @@ script = ExtResource("1_v0l8b")
 [node name="Spawner" parent="." unique_id=416709119 instance=ExtResource("4_p1hux")]
 
 [node name="Cursor" parent="." unique_id=2012913201 instance=ExtResource("2_wp4xf")]
+visible = false
 position = Vector2(960, 540)
 
 [node name="StartCursor" type="Marker2D" parent="." unique_id=1534521505]
 position = Vector2(960, 540)
 
 [node name="MainInterface" parent="." unique_id=279520381 instance=ExtResource("4_brvut")]
+visible = false
 
 [node name="Sky" parent="." unique_id=792652258 instance=ExtResource("4_4j5ol")]
 
+[node name="GameOver" parent="." unique_id=1676943369 instance=ExtResource("6_4j5ol")]
+visible = false
+
+[node name="Menu" parent="." unique_id=969284319 instance=ExtResource("7_p1hux")]
+
 [connection signal="ball_leave" from="Spawner" to="." method="game_over"]
 [connection signal="shoot" from="Cursor" to="." method="_on_cursor_shoot"]
-[connection signal="reset" from="MainInterface" to="." method="_on_main_interface_reset"]
+[connection signal="home" from="GameOver" to="." method="_on_game_over_home"]
+[connection signal="reset" from="GameOver" to="." method="new_game"]
+[connection signal="play" from="Menu" to="." method="new_game"]

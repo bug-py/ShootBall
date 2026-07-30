@@ -7,7 +7,6 @@
 layer = -1
 script = ExtResource("1_28pcw")
 cloud_scene = ExtResource("2_wud5e")
-cloud_count = 50
 
 [node name="Background" type="ColorRect" parent="." unique_id=116547871]
 anchors_preset = 15

@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed : float =3400
+@export var speed : float =3500
 @export var angular_speed_move : float=360
 @export var angular_speed_still: float=125
 @export var min_len_shoot : float =45

@@ -2,8 +2,9 @@ extends AnimatedSprite2D
 class_name  Cloud
 signal exit_screen
 const scale_interval=Vector2(5,9)
-const speed_interval=Vector2(100,200)
+const speed_interval=Vector2(100,175)
 var current_speed:int;
+
 func apply(value,weigth):
 	return value.x+(value.y-value.x)*weigth
 

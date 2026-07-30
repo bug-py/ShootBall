@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://b7a0ku20s5edv"]
+
+[ext_resource type="Script" uid="uid://6vp5g8klji40" path="res://script/menu_interface.gd" id="1_pdwks"]
+[ext_resource type="FontFile" uid="uid://cdm7t850wajd6" path="res://asset/font/Jersey20-Regular.ttf" id="1_xlj1e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlj1e"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13dyr"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pdwks"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5r8a"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 20
+
+[node name="Menu" type="CanvasLayer" unique_id=969284319]
+script = ExtResource("1_pdwks")
+
+[node name="Play" type="Button" parent="." unique_id=1996048587]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.5
+offset_top = 10.0
+offset_right = 220.5
+offset_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xlj1e")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_xlj1e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_13dyr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pdwks")
+text = "PLAY"
+
+[node name="Quit" type="Button" parent="." unique_id=133797985]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -220.5
+offset_top = -280.0
+offset_right = 220.5
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xlj1e")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_xlj1e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_e5r8a")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pdwks")
+text = "QUIT"
+
+[node name="Title" type="VSplitContainer" parent="." unique_id=519059171]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -301.0
+offset_right = 301.0
+offset_bottom = 470.0
+grow_horizontal = 2
+split_offsets = PackedInt32Array(50)
+split_offset = 50
+
+[node name="Shoot" type="Label" parent="Title" unique_id=436608166]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xlj1e")
+theme_override_font_sizes/font_size = 256
+text = "SHOOT"
+
+[node name="Ball" type="Label" parent="Title" unique_id=1840574428]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xlj1e")
+theme_override_font_sizes/font_size = 200
+text = "BALL"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

@@ -3,12 +3,11 @@ extends Node2D
 var screen_size:Vector2
 @export var ball_scene:PackedScene
 @export var bomb_scene:PackedScene
-const DELAY_EXTRA_BALL_GROUP_FACTOR=0.65
-const DELAY_EXTRA_BOMB_GROUP_FACTOR=0.1
+const DELAY_EXTRA_BALL_GROUP_FACTOR=0.5
+const DELAY_EXTRA_BOMB_GROUP_FACTOR=0.2
 signal ball_leave
 func _ready():
 	screen_size=get_viewport_rect().size
-	start()
 func start():
 	$DifficultyManager.reset()
 	$SpawnBallDelay.wait_time=$DifficultyManager.get_value_based_score("SpawnBallDelay")
@@ -54,7 +53,7 @@ func _on_spawn_ball_delay_timeout() -> void:
 		ball.quit_screen.connect(ball_leave.emit)
 		$PlaceBall.add_child(ball)
 		var pos=Vector2(randi_range(100,screen_size.x-100),screen_size.y)
-		ball.start(pos,Vector2(size,size),gravity_scale,randi_range(0,50)==0)
+		ball.start(pos,Vector2(size,size),gravity_scale,randi_range(0,25)==0)
 	update_timer_delay($SpawnBallDelay,ball_count,DELAY_EXTRA_BALL_GROUP_FACTOR)
 	$SpawnBallDelay.start()
 

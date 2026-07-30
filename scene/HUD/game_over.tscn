@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://di36jqqp4sby0"]
+
+[ext_resource type="Script" uid="uid://b5ljt0javlq78" path="res://script/game_over_interface.gd" id="1_7p8se"]
+[ext_resource type="FontFile" uid="uid://cdm7t850wajd6" path="res://asset/font/Jersey20-Regular.ttf" id="1_cnjtm"]
+[ext_resource type="Texture2D" uid="uid://b566db1iyvjyn" path="res://asset/image/button/HOME.png" id="2_64gkp"]
+[ext_resource type="Texture2D" uid="uid://by8v1j8h08efx" path="res://asset/image/button/RESET.png" id="2_mu8gt"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_64gkp"]
+device = -1
+keycode = 4194308
+
+[sub_resource type="Shortcut" id="Shortcut_xicc8"]
+events = [SubResource("InputEventKey_64gkp")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_7p8se"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_64gkp"]
+events = [SubResource("InputEventKey_7p8se")]
+
+[node name="GameOver" type="CanvasLayer" unique_id=1676943369]
+script = ExtResource("1_7p8se")
+
+[node name="text" type="Label" parent="." unique_id=88132498]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -494.0
+offset_top = 88.0
+offset_right = 515.0
+offset_bottom = 345.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_cnjtm")
+theme_override_font_sizes/font_size = 256
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="home" type="TextureButton" parent="." unique_id=1329810238]
+texture_filter = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 582.0
+offset_top = 201.0
+offset_right = 692.0
+offset_bottom = 326.0
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+shortcut = SubResource("Shortcut_xicc8")
+texture_normal = ExtResource("2_64gkp")
+
+[node name="reset" type="TextureButton" parent="." unique_id=928293051]
+texture_filter = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -773.0
+offset_top = 209.0
+offset_right = -663.0
+offset_bottom = 334.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+shortcut = SubResource("Shortcut_64gkp")
+texture_normal = ExtResource("2_mu8gt")
+
+[node name="score" type="Label" parent="." unique_id=1804664846]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -146.5
+offset_right = 108.0
+offset_bottom = 146.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.37254903, 0, 1)
+theme_override_fonts/font = ExtResource("1_cnjtm")
+theme_override_font_sizes/font_size = 250
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="reset" to="." method="_on_reset_pressed"]
