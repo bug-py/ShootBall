@@ -29,7 +29,6 @@ func decelerate(progress:float)->float:
 	return 1-(1-progress)**1.2
 
 func jump(progress:float):
-	var weight;
 	var relative_weight:float
 	var relative_progress:float
 	if progress<0.5:

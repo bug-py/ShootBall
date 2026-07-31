@@ -4,9 +4,11 @@ extends CanvasLayer
 func _ready()->void:
 	hide()
 
-func start():
-	$Score.text="0"	
-	update_life(5)
+func start(init_score:int,init_life:int):
+	update_score(init_score)
+	update_life(init_life)
+	$Score/InitAnim.start()
+	$HealthBar/InitAnim.start()
 	show()
 func stop():
 	hide()

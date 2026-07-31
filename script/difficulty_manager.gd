@@ -1,6 +1,19 @@
 extends Node
 
 const difficultys={
+	"menu":{
+		"ScoreRange": null,
+		
+		"SpawnBallDelay": Vector2(1,1),
+		"GravityBall": Vector2(-0.15,-0.15),
+		"SizeBall": Vector2(1,1),
+		"GroupBall":Vector2(1,1),
+		
+		"SpawnBombDelay": Vector2(4,4),
+		"BombTimeMove": Vector2(2,2),
+		"SizeBomb": Vector2(1,1),
+		"GroupBomb": Vector2(1,1)
+	},
 	"easy":{
 		"ScoreRange":Vector2(0,50),
 		
@@ -59,7 +72,9 @@ var current_difficulty:Dictionary
 var score:int 
 func update_score(new_value):
 	score=new_value
-	if score>=0 and score<50 :
+	if score==-1:
+		current_difficulty=difficultys["menu"]
+	elif score>=0 and score<50 :
 		current_difficulty=difficultys["easy"]
 	elif score>=50 and score<100:
 		current_difficulty=difficultys["medium"]
@@ -67,19 +82,19 @@ func update_score(new_value):
 		current_difficulty=difficultys["hard"]
 	elif score>=150:
 		current_difficulty=difficultys["insane"]
-func reset():
-	score=0
-	current_difficulty=difficultys["easy"]
+
 
 func get_value_random(element):
-	var interval:Vector2=current_difficulty[element]
+	var interval=current_difficulty[element]
 	return randi_range(interval.x,interval.y)
 	
 func get_value_based_score(element:String):
 	var score_amplitude=current_difficulty["ScoreRange"]
+	var value:Vector2=current_difficulty[element]
+	if score_amplitude==null:
+		return value.x+(value.y-value.x)*0.5
 	var clamped_score=min(max(score,score_amplitude.x),score_amplitude.y)
 	var normalized_score=(clamped_score-score_amplitude.x)/(score_amplitude.y-score_amplitude.x)
-	var value:Vector2=current_difficulty[element]
 	return value.x+(value.y-value.x)* normalized_score
 
 	

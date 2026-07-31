@@ -44,15 +44,16 @@ func make_shoot():
 func _process(delta: float) -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
 	var move = mouse_pos-position
-	var len=move.length()
-	if len :
+	
+	var length=move.length()
+	if length :
 		rotation_degrees+=angular_speed_move*delta
-		position+=move.normalized() * min(speed*delta,len)
+		position+=move.normalized() * min(speed*delta,length)
 		position=position.clamp(Vector2.ZERO,screen_size)
 	else :
 		rotation_degrees+=angular_speed_still*delta
 		
-	if len<min_len_shoot :
+	if length<min_len_shoot :
 		if collision_node :
 			$AnimatedSprite2D.animation="trigger"
 		else :

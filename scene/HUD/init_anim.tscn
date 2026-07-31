@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cv8uy34ejr3lu"]
+
+[ext_resource type="Script" uid="uid://cpy6p7bmwe6c4" path="res://script/init_hover_anim.gd" id="1_rvfy3"]
+
+[node name="InitAnim" type="Node" unique_id=386329544]
+script = ExtResource("1_rvfy3")

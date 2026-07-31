@@ -1,6 +1,6 @@
 extends Node2D
 
-
+var in_menu:bool=false;
 var screen_size:Vector2
 var score:int 
 var life :int
@@ -9,7 +9,7 @@ var life :int
 
 func _ready() -> void:
 	screen_size=get_viewport_rect().size
-	$Menu.start()
+	menu()
 
 func update_score(new_score):
 	score=new_score
@@ -18,16 +18,24 @@ func update_score(new_score):
 func update_life(new_life):
 	life=max(0,min(new_life,7))
 	$MainInterface.update_life(life)
+	
+func menu():
+	$Menu.start()
+	$Spawner.start(-1)
+	in_menu=true
 
+	
 func new_game():
-	update_score(0)
-	update_life(5)
+	score=0
+	life=5
 	$Cursor.start($StartCursor.position)
-	$MainInterface.start()
-	$Spawner.start()
+	$MainInterface.start(score,life)
+	$Spawner.start(score)
 	
 	
 func game_over():
+	if in_menu :
+		return 
 	update_life(life-1)
 	if !life :
 		$Spawner.clear_screen()
@@ -51,7 +59,9 @@ func _on_cursor_shoot(collision:Array[Node2D]) -> void:
 			game_over()
 			node.destroy()
 
-	
 
-func _on_game_over_home() -> void:
-	$Menu.start()
+func _on_menu_play() -> void:
+	in_menu=false
+	$Spawner.clear_screen()
+	$Spawner.stop()
+	new_game()

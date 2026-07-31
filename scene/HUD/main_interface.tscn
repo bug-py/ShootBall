@@ -3,29 +3,45 @@
 [ext_resource type="Script" uid="uid://drei6v8e2adcd" path="res://script/main_interface.gd" id="1_1oxx6"]
 [ext_resource type="FontFile" uid="uid://cdm7t850wajd6" path="res://asset/font/Jersey20-Regular.ttf" id="1_6sujd"]
 [ext_resource type="Texture2D" uid="uid://xk5vbjbxud5e" path="res://asset/image/life.png" id="3_idt65"]
+[ext_resource type="PackedScene" uid="uid://cv8uy34ejr3lu" path="res://scene/HUD/init_anim.tscn" id="3_s03fx"]
 [ext_resource type="Texture2D" uid="uid://dm2yok0notlw6" path="res://asset/image/gold_life.png" id="4_tgufv"]
 
 [node name="MainInterface" type="CanvasLayer" unique_id=279520381]
 script = ExtResource("1_1oxx6")
 
 [node name="Score" type="Label" parent="." unique_id=1634191740]
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 186.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -58.0
+offset_right = 58.0
+offset_bottom = 265.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.24840015, 0.24840018, 0.24840015, 1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_6sujd")
-theme_override_font_sizes/font_size = 185
+theme_override_font_sizes/font_size = 200
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="InitAnim" parent="Score" unique_id=386329544 instance=ExtResource("3_s03fx")]
+enable_scale = true
+begin_scale = 2.0
+end_scale = 1.0
+time_scale = 0.5
+enable_opacity = true
+time_opacity = 1.0
+
 [node name="HealthBar" type="HBoxContainer" parent="." unique_id=2139992694]
-offset_left = 35.0
-offset_top = 27.0
-offset_right = 492.0
-offset_bottom = 104.0
+offset_left = 75.0
+offset_top = 62.0
+offset_right = 638.0
+offset_bottom = 139.0
+scale = Vector2(1.15, 1.15)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 alignment = 1
+metadata/_edit_group_ = true
 
 [node name="life_0" type="TextureRect" parent="HealthBar" unique_id=1128323431]
 texture_filter = 1
@@ -68,3 +84,8 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("4_tgufv")
 expand_mode = 2
+
+[node name="InitAnim" parent="HealthBar" unique_id=1078688275 instance=ExtResource("3_s03fx")]
+enable_scale = true
+end_scale = 1.15
+time_scale = 0.5

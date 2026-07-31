@@ -32,6 +32,6 @@ visible = false
 
 [connection signal="ball_leave" from="Spawner" to="." method="game_over"]
 [connection signal="shoot" from="Cursor" to="." method="_on_cursor_shoot"]
-[connection signal="home" from="GameOver" to="." method="_on_game_over_home"]
+[connection signal="home" from="GameOver" to="." method="menu"]
 [connection signal="reset" from="GameOver" to="." method="new_game"]
-[connection signal="play" from="Menu" to="." method="new_game"]
+[connection signal="play" from="Menu" to="." method="_on_menu_play"]

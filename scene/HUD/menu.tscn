@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://6vp5g8klji40" path="res://script/menu_interface.gd" id="1_pdwks"]
 [ext_resource type="FontFile" uid="uid://cdm7t850wajd6" path="res://asset/font/Jersey20-Regular.ttf" id="1_xlj1e"]
+[ext_resource type="PackedScene" uid="uid://cv8uy34ejr3lu" path="res://scene/HUD/init_anim.tscn" id="3_13dyr"]
+[ext_resource type="PackedScene" uid="uid://3m0uc85od5k6" path="res://scene/HUD/hover_anim.tscn" id="4_e5r8a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlj1e"]
 bg_color = Color(1, 1, 1, 1)
@@ -37,6 +39,13 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 corner_detail = 20
 
+[sub_resource type="InputEventKey" id="InputEventKey_e5r8a"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_e5r8a"]
+events = [SubResource("InputEventKey_e5r8a")]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5r8a"]
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 10
@@ -65,6 +74,7 @@ offset_right = 220.5
 offset_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -73,7 +83,17 @@ theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = SubResource("StyleBoxFlat_xlj1e")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_13dyr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pdwks")
+shortcut = SubResource("Shortcut_e5r8a")
 text = "PLAY"
+
+[node name="InitAnim" parent="Play" unique_id=386329544 instance=ExtResource("3_13dyr")]
+enable_opacity = true
+time_opacity = 1.5
+
+[node name="HoverAnim" parent="Play" unique_id=1827779042 instance=ExtResource("4_e5r8a")]
+min_scale = 1.0
+max_scale = 1.2
+time_scale = 0.5
 
 [node name="Quit" type="Button" parent="." unique_id=133797985]
 anchors_preset = 7
@@ -87,6 +107,7 @@ offset_right = 220.5
 offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -97,6 +118,15 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_e5r8a")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pdwks")
 text = "QUIT"
 
+[node name="InitAnim" parent="Quit" unique_id=1758312978 instance=ExtResource("3_13dyr")]
+enable_opacity = true
+time_opacity = 1.5
+
+[node name="HoverAnim" parent="Quit" unique_id=1202050635 instance=ExtResource("4_e5r8a")]
+min_scale = 1.0
+max_scale = 1.2
+time_scale = 0.5
+
 [node name="Title" type="VSplitContainer" parent="." unique_id=519059171]
 anchors_preset = 5
 anchor_left = 0.5
@@ -105,10 +135,13 @@ offset_left = -301.0
 offset_right = 301.0
 offset_bottom = 470.0
 grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 split_offsets = PackedInt32Array(50)
+dragging_enabled = false
 split_offset = 50
 
 [node name="Shoot" type="Label" parent="Title" unique_id=436608166]
+texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xlj1e")
@@ -116,6 +149,7 @@ theme_override_font_sizes/font_size = 256
 text = "SHOOT"
 
 [node name="Ball" type="Label" parent="Title" unique_id=1840574428]
+texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_xlj1e")
@@ -123,5 +157,15 @@ theme_override_font_sizes/font_size = 200
 text = "BALL"
 horizontal_alignment = 1
 
+[node name="InitAnim" parent="Title" unique_id=1554761776 instance=ExtResource("3_13dyr")]
+enable_scale = true
+begin_scale = 10.0
+end_scale = 1.0
+time_scale = 1.0
+
+[connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]
+[connection signal="mouse_exited" from="Play" to="." method="_on_play_mouse_exited"]
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="mouse_exited" from="Quit" to="." method="_on_quit_mouse_exited"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
